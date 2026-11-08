@@ -1,1 +1,477 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fc;
+            color: #333;
+        }
+
+        /* Navigation */
+        header {
+            background: #172554;
+            padding: 18px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav h2 {
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+            border-bottom: 2px solid #38bdf8;
+        }
+
+        /* Home Section */
+        #home {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            padding: 40px 20px;
+            animation: fadeIn 1.5s;
+        }
+
+        #home h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        #home p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #172554;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: scale(1.08);
+        }
+
+        /* Common Sections */
+        section {
+            padding: 65px 10%;
+            scroll-margin-top: 65px;
+        }
+
+        section h2 {
+            text-align: center;
+            color: #172554;
+            margin-bottom: 30px;
+            font-size: 30px;
+        }
+
+        .content {
+            max-width: 1000px;
+            margin: auto;
+            line-height: 1.8;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: 0.4s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: #2563eb;
+            margin-bottom: 12px;
+        }
+
+        /* Profile */
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #2563eb;
+            margin-bottom: 20px;
+        }
+
+        /* Skills */
+        .skill {
+            margin: 18px 0;
+        }
+
+        .skill-bar {
+            background: #ddd;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-level {
+            height: 100%;
+            background: #2563eb;
+            border-radius: 10px;
+            animation: grow 2s ease-in-out;
+        }
+
+        /* Resume */
+        .resume {
+            text-align: center;
+        }
+
+        /* Contact */
+        #contact {
+            background: #e0e7ff;
+        }
+
+        .contact-info {
+            text-align: center;
+            line-height: 2.2;
+        }
+
+        footer {
+            background: #172554;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes grow {
+            from { width: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            #home h1 {
+                font-size: 32px;
+            }
+
+            #home p {
+                font-size: 17px;
+            }
+
+            section {
+                padding: 45px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <nav>
+        <h2>My Portfolio</h2>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#profile">Profile</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#hobbies">Hobbies</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Home -->
+<section id="home">
+    <h1>Hello, I'm Your Name</h1>
+    <p>Student | Web Developer | Programmer</p>
+    <a href="#profile" class="btn">Explore My Portfolio</a>
+</section>
+
+<!-- Profile -->
+<section id="profile">
+    <h2>My Profile</h2>
+    <div class="content profile">
+        <img src="profile.jpg" alt="My Profile Photo">
+        <p>
+            Hello! I am a passionate student interested in
+            programming, technology and web development.
+            I enjoy learning new technologies and creating
+            innovative projects.
+        </p>
+    </div>
+</section>
+
+<!-- Education -->
+<section id="education">
+    <h2>Educational Qualifications</h2>
+    <div class="content cards">
+
+        <div class="card">
+            <h3>School Education</h3>
+            <p>School Name</p>
+            <p>Year: 2022</p>
+            <p>Percentage: 85%</p>
+        </div>
+
+        <div class="card">
+            <h3>Higher Secondary</h3>
+            <p>College Name</p>
+            <p>Year: 2024</p>
+            <p>Percentage: 88%</p>
+        </div>
+
+        <div class="card">
+            <h3>Graduation</h3>
+            <p>University Name</p>
+            <p>Course: Computer Science</p>
+            <p>Currently Studying</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+    <h2>Technical Skills</h2>
+    <div class="content">
+
+        <div class="skill">
+            <p>HTML</p>
+            <div class="skill-bar">
+                <div class="skill-level" style="width:90%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <p>CSS</p>
+            <div class="skill-bar">
+                <div class="skill-level" style="width:80%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <p>Python</p>
+            <div class="skill-bar">
+                <div class="skill-level" style="width:75%"></div>
+            </div>
+        </div>
+
+        <div class="skill">
+            <p>JavaScript</p>
+            <div class="skill-bar">
+                <div class="skill-level" style="width:65%"></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Hobbies -->
+<section id="hobbies">
+    <h2>My Hobbies</h2>
+    <div class="content cards">
+
+        <div class="card">
+            <h3>📚 Reading</h3>
+            <p>Reading books and learning new things.</p>
+        </div>
+
+        <div class="card">
+            <h3>💻 Coding</h3>
+            <p>Developing programs and websites.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎵 Music</h3>
+            <p>Listening to music in my free time.</p>
+        </div>
+
+        <div class="card">
+            <h3>🏏 Sports</h3>
+            <p>Playing outdoor games and sports.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+    <h2>My Projects</h2>
+    <div class="content cards">
+
+        <div class="card">
+            <h3>Personal Portfolio</h3>
+            <p>A responsive personal website using HTML and CSS.</p>
+        </div>
+
+        <div class="card">
+            <h3>Student Management System</h3>
+            <p>A system to manage student details and records.</p>
+        </div>
+
+        <div class="card">
+            <h3>Calculator</h3>
+            <p>A simple calculator application using Python.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Achievements -->
+<section id="achievements">
+    <h2>Achievements</h2>
+    <div class="content cards">
+
+        <div class="card">
+            <h3>Academic Achievement</h3>
+            <p>Recognized for academic performance.</p>
+        </div>
+
+        <div class="card">
+            <h3>Technical Achievement</h3>
+            <p>Participated in a technical competition.</p>
+        </div>
+
+        <div class="card">
+            <h3>Certificates</h3>
+            <p>Completed programming and web development courses.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Resume -->
+<section id="resume">
+    <h2>My Resume</h2>
+    <div class="content resume">
+        <p>
+            Download my resume to know more about
+            my education, skills and experience.
+        </p>
+        <br>
+        <a href="resume.pdf" download class="btn">
+            Download Resume
+        </a>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <h2>Contact Me</h2>
+    <div class="content contact-info">
+
+        <p><b>Email:</b> yourname@gmail.com</p>
+        <p><b>Phone:</b> +91 9876543210</p>
+        <p><b>Location:</b> Your City, India</p>
+        <p><b>LinkedIn:</b>
+            <a href="https://www.linkedin.com/" target="_blank">
+                LinkedIn Profile
+            </a>
+        </p>
+
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 My Personal Portfolio. All Rights Reserved.</p>
+    <p>Designed using HTML, CSS and JavaScript.</p>
+</footer>
+
+<script>
+    // Interactive navigation effect
+    const links = document.querySelectorAll("nav ul li a");
+
+    links.forEach(link => {
+        link.addEventListener("click", function() {
+            links.forEach(item => item.style.color = "white");
+            this.style.color = "#38bdf8";
+        });
+    });
+</script>
+
+</body>
+</html>
+
