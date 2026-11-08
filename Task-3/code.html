@@ -1,1 +1,632 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechZone - Electronics Catalog</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f6fa;
+    color: #222;
+}
+
+/* Navigation Bar */
+header {
+    background: #14213d;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffb703;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ffb703;
+}
+
+/* Banner */
+.banner {
+    background: linear-gradient(120deg, #14213d, #277da1);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
+
+.banner h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    font-size: 18px;
+}
+
+/* Categories */
+.categories {
+    text-align: center;
+    padding: 30px 15px;
+}
+
+.categories h2 {
+    margin-bottom: 20px;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.category-buttons button {
+    padding: 11px 23px;
+    background: white;
+    border: 1px solid #277da1;
+    color: #277da1;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.category-buttons button:hover,
+.category-buttons button.active {
+    background: #277da1;
+    color: white;
+}
+
+/* Product Section */
+.products {
+    padding: 25px 7%;
+}
+
+.products h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    position: relative;
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+}
+
+.product-card h3 {
+    margin: 12px 0;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #666;
+    margin: 8px 0;
+}
+
+.discount {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: #e63946;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.rating {
+    color: #f4a261;
+    margin: 10px;
+}
+
+.price {
+    color: #14213d;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+.product-card button {
+    background: #277da1;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background: #14213d;
+}
+
+/* Comparison Table */
+.comparison {
+    padding: 35px 7%;
+}
+
+.comparison h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 650px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 14px;
+    text-align: center;
+}
+
+th {
+    background: #14213d;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #eef3f8;
+}
+
+/* Product Details */
+.details {
+    padding: 35px 7%;
+}
+
+.details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.detail-box {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.detail-box img {
+    width: 250px;
+    height: 220px;
+    object-fit: contain;
+}
+
+.detail-info {
+    flex: 1;
+    min-width: 230px;
+}
+
+.detail-info h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.detail-info p {
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.detail-info button {
+    background: #ffb703;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Footer */
+footer {
+    background: #14213d;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 35px;
+}
+
+/* Responsive Design */
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav {
+        text-align: center;
+        line-height: 2.2;
+    }
+
+    .banner h1 {
+        font-size: 27px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card img {
+        height: 110px;
+    }
+
+    .detail-box {
+        justify-content: center;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <div class="logo">TechZone</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Products</a>
+        <a href="#comparison">Compare</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Banner -->
+<section class="banner">
+    <h1>Welcome to TechZone</h1>
+    <p>Explore the Latest Electronics at Amazing Prices!</p>
+    <p>Special Discounts Up To 40% OFF</p>
+</section>
+
+<!-- Categories -->
+<section class="categories" id="categories">
+    <h2>Browse Categories</h2>
+
+    <div class="category-buttons">
+        <button class="active" onclick="filterProducts('all',this)">All</button>
+        <button onclick="filterProducts('Laptop',this)">Laptops</button>
+        <button onclick="filterProducts('Smartphone',this)">Smartphones</button>
+        <button onclick="filterProducts('Accessories',this)">Accessories</button>
+        <button onclick="filterProducts('Smart Device',this)">Smart Devices</button>
+    </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+    <h2>Featured Electronics</h2>
+
+    <div class="product-grid">
+
+        <!-- Laptop -->
+        <div class="product-card" data-category="Laptop">
+            <span class="discount">20% OFF</span>
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" alt="Laptop">
+            <h3>HP Pavilion Laptop</h3>
+            <p>Intel Core i5 | 16GB RAM | 512GB SSD</p>
+            <div class="rating">★★★★★ 4.8/5</div>
+            <div class="price">₹55,999
+                <span class="old-price">₹69,999</span>
+            </div>
+            <button onclick="showDetails('HP Pavilion Laptop')">View Details</button>
+        </div>
+
+        <!-- Smartphone -->
+        <div class="product-card" data-category="Smartphone">
+            <span class="discount">15% OFF</span>
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Smartphone">
+            <h3>Samsung Galaxy Phone</h3>
+            <p>8GB RAM | 128GB Storage | AMOLED</p>
+            <div class="rating">★★★★★ 4.7/5</div>
+            <div class="price">₹24,999
+                <span class="old-price">₹29,999</span>
+            </div>
+            <button onclick="showDetails('Samsung Galaxy Phone')">View Details</button>
+        </div>
+
+        <!-- Accessories -->
+        <div class="product-card" data-category="Accessories">
+            <span class="discount">30% OFF</span>
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Headphones">
+            <h3>Wireless Headphones</h3>
+            <p>Bluetooth | Noise Isolation | Long Battery</p>
+            <div class="rating">★★★★☆ 4.5/5</div>
+            <div class="price">₹1,399
+                <span class="old-price">₹1,999</span>
+            </div>
+            <button onclick="showDetails('Wireless Headphones')">View Details</button>
+        </div>
+
+        <!-- Smart Device -->
+        <div class="product-card" data-category="Smart Device">
+            <span class="discount">25% OFF</span>
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Smart Watch">
+            <h3>Smart Watch</h3>
+            <p>Fitness Tracking | Heart Rate | Bluetooth</p>
+            <div class="rating">★★★★★ 4.6/5</div>
+            <div class="price">₹2,999
+                <span class="old-price">₹3,999</span>
+            </div>
+            <button onclick="showDetails('Smart Watch')">View Details</button>
+        </div>
+
+        <!-- Laptop 2 -->
+        <div class="product-card" data-category="Laptop">
+            <span class="discount">10% OFF</span>
+            <img src="https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500" alt="Laptop">
+            <h3>Dell Inspiron Laptop</h3>
+            <p>Intel Core i7 | 16GB RAM | 1TB SSD</p>
+            <div class="rating">★★★★★ 4.9/5</div>
+            <div class="price">₹72,999
+                <span class="old-price">₹80,999</span>
+            </div>
+            <button onclick="showDetails('Dell Inspiron Laptop')">View Details</button>
+        </div>
+
+        <!-- Smartphone 2 -->
+        <div class="product-card" data-category="Smartphone">
+            <span class="discount">20% OFF</span>
+            <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500" alt="Phone">
+            <h3>iPhone Series</h3>
+            <p>128GB Storage | Advanced Camera</p>
+            <div class="rating">★★★★★ 4.8/5</div>
+            <div class="price">₹59,999
+                <span class="old-price">₹74,999</span>
+            </div>
+            <button onclick="showDetails('iPhone Series')">View Details</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Product Comparison -->
+<section class="comparison" id="comparison">
+    <h2>Product Comparison Table</h2>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Specifications</th>
+                <th>HP Pavilion</th>
+                <th>Dell Inspiron</th>
+                <th>Samsung Galaxy</th>
+            </tr>
+
+            <tr>
+                <td>Category</td>
+                <td>Laptop</td>
+                <td>Laptop</td>
+                <td>Smartphone</td>
+            </tr>
+
+            <tr>
+                <td>Processor</td>
+                <td>Intel Core i5</td>
+                <td>Intel Core i7</td>
+                <td>Octa-Core</td>
+            </tr>
+
+            <tr>
+                <td>RAM</td>
+                <td>16GB</td>
+                <td>16GB</td>
+                <td>8GB</td>
+            </tr>
+
+            <tr>
+                <td>Storage</td>
+                <td>512GB SSD</td>
+                <td>1TB SSD</td>
+                <td>128GB</td>
+            </tr>
+
+            <tr>
+                <td>Display</td>
+                <td>15.6 inch</td>
+                <td>15.6 inch</td>
+                <td>AMOLED</td>
+            </tr>
+
+            <tr>
+                <td>Price</td>
+                <td>₹55,999</td>
+                <td>₹72,999</td>
+                <td>₹24,999</td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<!-- Product Details -->
+<section class="details" id="details">
+    <h2>Product Details</h2>
+
+    <div class="detail-box">
+        <img id="detail-image"
+        src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
+        alt="Selected Product">
+
+        <div class="detail-info">
+            <h3 id="detail-name">HP Pavilion Laptop</h3>
+
+            <p id="detail-description">
+                A powerful laptop suitable for students,
+                office work, entertainment and multitasking.
+            </p>
+
+            <p><b>Specifications:</b></p>
+            <p id="detail-specs">
+                Intel Core i5 Processor, 16GB RAM,
+                512GB SSD and Full HD Display.
+            </p>
+
+            <p><b>Availability:</b> In Stock</p>
+            <p><b>Discount:</b> 20% OFF</p>
+
+            <div class="price" id="detail-price">₹55,999</div>
+
+            <button onclick="alert('Product selected successfully!')">
+                Buy Now
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+    <h3>TechZone Electronics Catalog</h3>
+    <p>Latest Technology | Best Deals | Quality Products</p>
+    <p>Email: support@techzone.com</p>
+    <p>© 2026 TechZone. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+// Category Filtering
+function filterProducts(category, button) {
+    let products = document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+        if (category === "all" ||
+            product.dataset.category === category) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+
+    document.querySelectorAll(".category-buttons button")
+        .forEach(btn => btn.classList.remove("active"));
+
+    button.classList.add("active");
+}
+
+// Product Details
+const productData = {
+    "HP Pavilion Laptop": {
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
+        description: "A powerful laptop suitable for students, office work and entertainment.",
+        specs: "Intel Core i5, 16GB RAM, 512GB SSD, Full HD Display.",
+        price: "₹55,999"
+    },
+
+    "Samsung Galaxy Phone": {
+        image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
+        description: "A modern smartphone with a bright display and advanced camera.",
+        specs: "8GB RAM, 128GB Storage, AMOLED Display, Octa-Core Processor.",
+        price: "₹24,999"
+    },
+
+    "Wireless Headphones": {
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+        description: "Comfortable wireless headphones for music and entertainment.",
+        specs: "Bluetooth Connectivity, Noise Isolation, Rechargeable Battery.",
+        price: "₹1,399"
+    },
+
+    "Smart Watch": {
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+        description: "A smart wearable device for everyday activity tracking.",
+        specs: "Fitness Tracking, Heart Rate Monitoring, Bluetooth Connectivity.",
+        price: "₹2,999"
+    },
+
+    "Dell Inspiron Laptop": {
+        image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500",
+        description: "A high-performance laptop for professional and educational use.",
+        specs: "Intel Core i7, 16GB RAM, 1TB SSD, 15.6-inch Display.",
+        price: "₹72,999"
+    },
+
+    "iPhone Series": {
+        image: "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500",
+        description: "A premium smartphone with an advanced camera system.",
+        specs: "128GB Storage, Advanced Camera, High-resolution Display.",
+        price: "₹59,999"
+    }
+};
+
+function showDetails(name) {
+    const product = productData[name];
+
+    document.getElementById("detail-name").innerText = name;
+    document.getElementById("detail-image").src = product.image;
+    document.getElementById("detail-description").innerText = product.description;
+    document.getElementById("detail-specs").innerText = product.specs;
+    document.getElementById("detail-price").innerText = product.price;
+
+    document.getElementById("details").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
+
+</body>
+</html>
+
